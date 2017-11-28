@@ -1,1 +1,1 @@
-*.txt linguist-language=Cpp
+cmake_modules/* linguist-vendored
