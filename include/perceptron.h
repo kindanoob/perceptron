@@ -1,5 +1,5 @@
-#ifndef GRAPH_PLOTTER_H_
-#define GRAPH_PLOTTER_H_
+#ifndef PERCEPTRON_H_
+#define PERCEPTRON_H_
 
 #include <string>
 #include <vector>
@@ -10,74 +10,74 @@
 #include <SFML/System.hpp>
 
 
-const int SCREEN_WIDTH_IN_PIXELS = 1600;
-const int SCREEN_HEIGHT_IN_PIXELS = 1200;
+const int kScreenWidthInPixels = 1600;
+const int kScreenHeightInPixels = 1200;
 
-//const sf::VideoMode WINDOW_VIDEO_MODE = sf::VideoMode(SCREEN_WIDTH_IN_PIXELS, 
-	                                                  //SCREE_HEIGHT_IN_PIXELS);
 
-const sf::String WINDOW_TITLE = "Perceptron";
-const int ANTIALIASING_LEVEL = 8;
+const sf::String kWindowTitle = "Perceptron";
+const int kAntialiasingLevel = 8;
 
-const int ORIGIN_X = SCREEN_WIDTH_IN_PIXELS / 2;
-const int ORIGIN_Y = SCREEN_HEIGHT_IN_PIXELS / 2;
+const int kOriginX = kScreenWidthInPixels / 2;
+const int kOriginY = kScreenHeightInPixels / 2;
 
-const sf::Color AXES_COLOR = sf::Color(0, 0, 0);
-const int AXES_THICKNESS = 2;
+const sf::Color kAxesColor = sf::Color(0, 0, 0);
+const int kAxesThickness = 2;
 
-const int GRID_STEP_IN_PIXELS = 20;
-const sf::Color GRID_COLOR = sf::Color(200, 200, 200);
+const int kGridStepInPixels = 20;
+const sf::Color kGridColor = sf::Color(200, 200, 200);
 
-const int PLOT_STEP_IN_PIXELS = 1;
-const sf::Color PLOT_COLOR = sf::Color(0, 180, 0);
-//const sf::Color PLOT_COLOR = sf::Color(255, 128, 0);
+const int kPlotStepInPixels = 1;
+const sf::Color kPlotColor = sf::Color(0, 180, 0);
+//const sf::Color kPlotColor = sf::Color(255, 128, 0);
 
-const double LEARNING_RATE = 0.1;
-const int NUM_ITERATIONS = 1;
-const int NUM_DIMENSIONS = 2 + 1;//including bias
-const int SAMPLE_SIZE = 7;
-const double WEIGHT_INITIAL_VALUE = 0;
+const double kLearningRate = 0.005;
+const int kNumIterations = 1;
+const int kNumDimensions = 2 + 1;//including bias
+const int kSampleSize = 7;
+const double kWeightInitialValue = 0;
 
-const int LABEL_PLUS = 1;
-const int LABEL_MINUS = 0;
+const int kModulo = 10000;
 
-const int MODULO = 10000;
+const double kCircleRadius = 4;
+const double kSquareSide = 2 * kCircleRadius;
 
-const double CIRCLE_RADIUS = 4;
-const double SQUARE_SIDE = 2 * CIRCLE_RADIUS;
+//struct representing sample points
+struct Example {
+	Example(const std::vector<int>& data, int label) : data_(data), label_(label){}
+	std::vector<int> data_;
+	int label_ = 0;
+};
 
-class GraphPlotter {
+
+class Perceptron {
 public:
-	GraphPlotter();
-	~GraphPlotter();	
-	void init_window();
-	void init_axes();
-	void init_axes2();
-	void init_grid();
-	void draw_axes();
-	void draw_grid();
-	void update_function_data();
-	void plot_function();
-	double f(double x);
-	void init_training_data();
-	void plot_training_data();
-	void run();
-	void init_weights();
-	void print_weights();
-	void train_perceptron();
+	Perceptron();
+	~Perceptron();	
+	void InitWindow();
+	void InitAxes();
+	void InitGrid();
+	void DrawAxes();
+	void DrawGrid();
+	void UpdateDecisionBoundaryData();
+	void PlotDecisionBoundary();
+	double F(double x);
+	void InitTrainingData();
+	void PlotTrainingData();
+	void Run();
+	void InitWeights();
+	void PrintWeights();
+	void TrainPerceptron();
 public:
-	sf::RenderWindow *window_;
+	//sf::RenderWindow *window_ = nullptr;
+	std::unique_ptr<sf::RenderWindow> window_;
 	std::vector<sf::Vertex> x_axis_;
 	std::vector<sf::Vertex> y_axis_;
-	//sf::RectangleShape x_axis_;
-	//sf::RectangleShape y_axis_;
 	std::vector<std::vector<sf::Vertex> > vertical_grid_;
 	std::vector<std::vector<sf::Vertex> > horizontal_grid_;
-	std::vector<std::vector<sf::Vertex> > function_data_;
-	std::vector<std::vector<int> > training_data_red_;
-	std::vector<std::vector<int> > training_data_blue_;
+	std::vector<std::vector<sf::Vertex> > decision_boundary_data_;
+	std::vector<Example> training_data_;
 	std::vector<double> weights_;
 };
 
 
-#endif
+#endif //PERCEPTRON_H_

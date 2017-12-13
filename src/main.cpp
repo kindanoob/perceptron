@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <random>
+#include <memory>
 
 
 #include "perceptron.h"
@@ -8,8 +9,7 @@
 
 int main() {
 	srand(time(nullptr));
-	GraphPlotter *graph_plotter = new GraphPlotter();
-	graph_plotter->run();
-	delete graph_plotter;	
+	std::unique_ptr<Perceptron> p(new Perceptron());
+	p->Run();
 	return 0;
 }
