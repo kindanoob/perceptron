@@ -68,7 +68,6 @@ public:
 	void PrintWeights();
 	void TrainPerceptron();
 public:
-	//sf::RenderWindow *window_ = nullptr;
 	std::unique_ptr<sf::RenderWindow> window_;
 	std::vector<sf::Vertex> x_axis_;
 	std::vector<sf::Vertex> y_axis_;
