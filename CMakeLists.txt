@@ -8,7 +8,7 @@ file(GLOB_RECURSE RESOURCES resources/fonts/*)
 set(EXECUTABLE_NAME "perceptron")
 add_executable(${EXECUTABLE_NAME} ${SOURCES} ${RESOURCES})
 
-target_compile_options(${EXECUTABLE_NAME} PUBLIC -std=c++11 -Wall -g -O3)
+target_compile_options(${EXECUTABLE_NAME} PUBLIC -std=c++14 -Wall -g -O3)
 
 file(COPY ${RESOURCES} DESTINATION resources/fonts)
 
