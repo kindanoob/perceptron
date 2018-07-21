@@ -1,24 +1,26 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.12)
 
 project(perceptron)
 
 file(GLOB_RECURSE SOURCES src/*.cpp include/*.h)
 file(GLOB_RECURSE RESOURCES resources/fonts/*)
 
+set(SFML_STATIC_LIBRARIES TRUE)
+
+#Define path to your SFML root here (for example, C:/libs/SFML-2.5.0)
+set(SFML_ROOT "path/to/your/SFML/root/folder")
+
+set(SFML_DIR "${SFML_ROOT}/lib/cmake/SFML")
 set(EXECUTABLE_NAME "perceptron")
 add_executable(${EXECUTABLE_NAME} ${SOURCES} ${RESOURCES})
 
-target_compile_options(${EXECUTABLE_NAME} PUBLIC -std=c++14 -Wall -g -O3)
+target_compile_options(${EXECUTABLE_NAME} PUBLIC -std=c++14 -O3)
 
 file(COPY ${RESOURCES} DESTINATION resources/fonts)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+find_package(SFML 2.5.0 REQUIRED network audio graphics window system)
 
-find_package(SFML 2.3.2 REQUIRED network audio graphics window system)
-if(SFML_FOUND)
-  include_directories(${SFML_INCLUDE_DIR})
-  target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
-endif()
+target_link_libraries(${EXECUTABLE_NAME} sfml-graphics sfml-window sfml-system)
 
