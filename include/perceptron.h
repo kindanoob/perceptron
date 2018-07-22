@@ -28,7 +28,6 @@ const sf::Color kGridColor = sf::Color(200, 200, 200);
 
 constexpr int kPlotStepInPixels = 1;
 const sf::Color kPlotColor = sf::Color(0, 180, 0);
-//const sf::Color kPlotColor = sf::Color(255, 128, 0);
 const sf::Color kWindowClearColor = sf::Color(255, 255, 255);
 
 constexpr double kLearningRate = 0.005;

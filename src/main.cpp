@@ -1,9 +1,8 @@
+#include "perceptron.h"
 #include <iostream>
 #include <ctime>
 #include <random>
 #include <memory>
-
-#include "perceptron.h"
 
 
 int main() {

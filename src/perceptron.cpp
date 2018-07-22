@@ -1,9 +1,8 @@
+#include "perceptron.h"
 #include <iostream>
 #include <cmath>
 #include <random>
 #include <utility>
-
-#include "perceptron.h"
 
 
 Perceptron::Perceptron() {
@@ -43,7 +42,7 @@ void Perceptron::InitAxes() {
 
 
 void Perceptron::InitGrid() {
-        //init horizontal grid
+    //init horizontal grid
     int y = kOriginY - kGridStepInPixels;
     while (y >= 0) {
         sf::Vertex up_first(sf::Vector2f(0, y), kGridColor);
