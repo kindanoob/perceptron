@@ -1,16 +1,15 @@
 # perceptron
 C++ implementation of perceptron classifier using SFML
 
-Requirements: 1) C++14, 2) SFML 2.5.0, 3) CMake 3.12
+Requirements: 1) C++14, 2) SFML 2.6.1, 3) CMake 3.22.1
 
-The program was tested on Ubuntu 16.04 LTS Xenial, gcc 5.4.0.
+The program was tested on Ubuntu 22.04 LTS Jammy, gcc 11.4.0.
 
-Instructions:
-
-1) For an out-of-place build: create a build directory (mkdir build)
-2) Change directory to the created build directory (cd build)
-3) Create build files with CMake in the build directory (cmake /put/here/path/to/CMakeLists.txt/file)
-4) Build the project (e.g. for Unix makefiles it is achieved by using "make" command in the terminal)
+Instructions for an out-or-place build:
+1) Go to the directory containing the CMakeLists.txt file.
+2) Run `cmake -S . -B build`. This will create a `build` directory and put CMake files there.
+3) Go to the `build` directory.
+4) Build the project (e.g. for Unix makefiles it is achieved by running `make` command in the terminal).
 5) Launch the executable file "perceptron".
 6) Keyboard controls. Press "G" to generate new training set, press "T" to perform one iteration of training (some training sets require more than one iteration to complete classification, so in these cases hit the "T" key until the classification is done).
 
